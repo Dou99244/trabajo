@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Silva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="encabezado"> 
+        <div class="encabezado_logo">Ferretería Silva Nuñez</div>
+        <nav class="nav_principal"> 
+            <ul class="nav_principal_lista">
+                <li><a href="#Inicio">Inicio</a></li>
+                <li><a href="#Catalogo">Catálogo</a></li>
+                <li><a href="#Nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>   
+        </nav>
+    </header>
+
+    <main>  
+        <section id="Inicio" class="carrusel">  
+            <div class="carrusel_contenedor">
+                <div class="carrusel_slide activo">
+                    <img src="imgcarrrusel/ferre.jpeg" alt="Herramientas">
+                </div>
+                <div class="carrusel_slide"> 
+                    <img src="imgcarrrusel/ferreteros-articulo.jpg" alt="Materiales">
+                </div>
+            </div>
+            <button class="carrusel__boton carrusel__boton--anterior" onclick="cambiarSlide(-1)">❮</button>
+            <button class="carrusel__boton carrusel__boton--siguientte" onclick="cambiarSlide(1)">❯</button>
+        </section>
+
+        <section id="Catalogo" class="catalogo">
+            <h2 class="catalogo__titulo">Productos destacados</h2>
+            <div class="catalogo__grid"> 
+                <article class="producto"> 
+                    <img src="imagenes/Taladropercutor.png" alt="Taladro Ferretería Silva">
+                    <h3 class="producto__nombre">Taladro Percutor</h3>
+                    <button class="producto__boton">Ver más</button>
+                </article>
+
+                <article class="producto">
+                    <img src="imagenes/martillo.jpg" alt="Martillo">
+                    <h3 class="producto__nombre">Martillo de Acero</h3>
+                    <button class="producto__boton">Ver más</button>
+                </article>
+
+                <article class="producto">
+                    <img src="imagenes/set_de_llaves.jpg" alt="Llaves">
+                    <h3 class="producto__nombre">Set de Llaves</h3>
+                    <button class="producto__boton" onclick="location.href='http://www.example.com'" type="button">Ver más</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="caracteristicas">
+            <div class="caracteristica__item">
+                <div class="caracteristica__circulo">🚚</div>
+                <h3>Despacho a Domicilio</h3>
+                <p>Llegamos a toda la región en menos de 24 horas.</p>
+            </div>
+            <div class="caracteristica__item">
+                <div class="caracteristica__circulo">🛠️</div>
+                <h3>Asesoría Técnica</h3>
+                <p>Expertos listos para ayudarte con tu proyecto.</p>
+            </div>
+            <div class="caracteristica__item">
+                <div class="caracteristica__circulo">💳</div>
+                <h3>Todo medio de pago</h3>
+                <p>Aceptamos tarjetas, transferencias y efectivo.</p>
+            </div>
+        </section>
+
+        <section class="testimonios" id="Nosotros">
+            <h2 class="testimonios__titulo">Lo que dicen nuestros clientes</h2>
+            <div class="testimonios__grid">
+                <div class="testimonio__tarjeta">
+                    <p class="testimonio__texto">"Excelente atención y los mejores precios de la zona."</p>
+                    <span class="testimonio__autor">- Juan Pérez</span>
+                </div>
+                <div class="testimonio__tarjeta">
+                    <p class="testimonio__texto">"Las herramientas son de primera calidad."</p>
+                    <span class="testimonio__autor">- María González</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto"> 
+            <h2>Contáctanos</h2>
+
+            <!-- Formulario de contacto -->
+            <form class="contacto__formulario" action="procesar_formulario.php" method="POST">
+                <div class="contacto__campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="contacto__campo">
+                    <label for="email">Correo</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="contacto__campo">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="contacto__boton">Enviar</button>
+            </form>
+
+            <!-- Ubicación en Google Maps -->
+            <h2 style="margin-top:3rem;">Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <!-- Video de YouTube -->
+            <div style="margin-top: 2rem;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nLDO8xL1J84" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="pie-pagina__contenedor">
+            <div class="pie-pagina__columna">
+                <h3 class="pie-pagina__titulo">Ferretería Silva</h3>
+                <p class="pie-pagina__texto">Más de 20 años proveyendo las mejores herramientas.</p>
+            </div>
+            <div class="pie-pagina__columna">
+                <h4 class="pie-pagina__subtitulo">Enlaces</h4>
+                <ul class="pie-pagina__lista">
+                    <li><a href="#Inicio">Inicio</a></li>
+                    <li><a href="#Catalogo">Catálogo</a></li>
+                    <li><a href="#Nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="pie-pagina__columna">
+                <h4 class="pie-pagina__subtitulo">Atención</h4>
+                <p class="pie-pagina__dato">+56 9 1234 5678</p>
+                <p class="pie-pagina__dato">Lun - Sáb: 8:00 - 19:00</p>
+            </div>
+        </div>
+        <div class="pie-pagina__barra-final">
+            <p>© 2026 Ferretería Silva Nuñez - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

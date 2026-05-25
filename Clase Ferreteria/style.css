@@ -1,0 +1,401 @@
+/* PROYECTO: Ferretería Silva Nuñez
+    ARQUITECTURA: BEM (Bloque, Elemento, Modificador)
+    ESTILO: Industrial Premium
+*/
+
+/* --- Variables Globales --- */
+:root {
+    --color-marca: #f97316;        /* Naranja Ferretero Pro */
+    --color-marca-dark: #ea580c;
+    --fondo-oscuro: #1e293b;       /* Azul Antracita */
+    --fondo-gris: #f8fafc;
+    --texto-principal: #334155;
+    --blanco: #ffffff;
+    --fuente-principal: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    
+    /* Sombras y Efectos */
+    --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --sombra-pro: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transicion: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Reset y Estilos Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+   font-family: var(--fuente-principal);
+    background-color: var(--fondo-gris);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Encabezado (Sticky Glassmorphism) --- */
+.encabezado {
+    background-color: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    color: var(--blanco);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.encabezado_logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    border-left: 4px var(--color-marca);
+    padding-left: 12px;
+}
+
+.nav_principal_lista {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav_principal_lista a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: var(--transicion);
+    letter-spacing: 0.5px;
+}
+
+.nav_principal_lista a:hover {
+    color: var(--color-marca);
+}
+
+.carrusel {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.carrusel_contenedor {
+    height: 100%;
+}
+
+.carrusel_contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: transform 0.7s ease;
+}
+
+.carrusel:hover img{
+transform: scale(1.06);
+}
+
+.carrusel__boton {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    background: rgba(249, 115, 22, 0.9);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transicion);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrusel__boton:hover {
+    background: var(--blanco);
+    color: var(--color-marca);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carrusel__boton--anterior { left: 60px; }
+.carrusel__boton--siguientte { right: 20px; }
+
+.carrusel_slide{
+    display: none;
+    animation: fade 1.5s;
+}
+
+@keyframes fade{
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+.carrusel_slide.activo{
+    display: block;
+}
+
+.caracteristicas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, var(--fondo-oscuro) 0% #0f172a 100%);
+    color: white;
+    text-align: center;
+}
+
+.caracteristica__circulo{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.caracteristica__item h3{
+    color: var(--color-marca-dark);
+    margin-bottom: 0.5rem;
+}
+
+.caracteristica__item p {
+    color: var(--fondo-oscuro);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.catalogo{
+    padding: 6rem 5%;
+    max-width: 1300;
+    margin: 0 auto;
+}
+
+.catalogo__titulo{
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    color: var(--fondo-oscuro);
+}
+
+.catalogo__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 2.5rem;
+}
+
+.producto{
+    background: var(--blanco);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transicion);
+    box-shadow: var(--sombra-suave);
+    border: 1px solid #e2e8f9;
+    position: relative;
+}
+
+.producto :hover{
+    transform: translateY(-15px);
+    box-shadow: var(--sombra-suave);
+    border-color: var(--color-marca);
+}
+
+.producto img{
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    padding: 2rem;
+    background: #f7f8fc;
+}
+
+.producto__nombre{
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--fondo-oscuro);
+}
+
+.producto__boton{
+    width: calc(100% - 3rem);
+    margin: 0 1.5rem 1.5rem;
+    padding: 1rem;
+    background: var(--color-marca);
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+}
+
+.producto__boton:hover{
+    background: var(--color-marca-dark);
+}
+
+.testimonios{
+    background-color: var(--blanco);
+    padding: 6 rem 5%;
+    text-align: center;
+}
+
+.testimonios__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.testimonio__tarjeta{
+    background: var(--fondo-gris);
+    padding: 3rem 3rem;
+    border-radius: 24px;
+    border-bottom: 5px solid var(--color-marca);
+    transition: var(--transicion);
+}
+
+.testimonio__tarjeta:hover{
+    background: var(--blanco);
+    box-shadow: var(--sombra-pro);
+}
+
+.contacto{
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.contacto h2{
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.iframe{
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: var(--sombra-pro);
+    margin-bottom: 3rem;
+    max-width: 900px;
+}
+
+.pie-pagina{
+    background-color: var(--fondo-oscuro);
+    color: var(--blanco);
+    padding: 5rem 5% 0;
+}
+
+.pie-pagina__contenedor{
+    max-width: 1200;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    padding-bottom: 4rem;
+}
+
+.pie-pagina__titulo{
+    color: var(--color-marca);
+    margin-bottom: 1.5rem;
+}
+
+.pie-pagina__subtitulo{
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-marca);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.pie-pagina__lista{
+    list-style: none;
+}
+
+.pie-pagina__lista li{
+    margin-bottom: 0.8rem;
+}
+
+.nav_principal_lista a{
+    color: #f8fafc;
+    text-decoration: none;
+    transition: 3.s;
+}
+
+.pie-pagina__lista a:hover{
+    color: var(--blanco);
+    padding-left: 8px;
+}
+
+.pie-pagina__barra-final{
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-marca);
+}
+
+@media(max-width:768px) {
+    .encabezado{flex-direction: column; text-align: center; padding: 1.5rrem;}
+    .nav_principal_lista{margin-top: 1rem; gap: 1rem; flex-wrap: wrap; justify-content: center;}
+    .carrusel{height: 350px;}
+    .catalogo__titulo{font-size: 2rem;}
+}
+
+.contacto__formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contacto__campo {
+    margin-bottom: 1.5rem;
+}
+
+.contacto__campo label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--fondo-oscuro);
+}
+
+.contacto__campo input,
+.contacto__campo textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: var(--fuente-principal);
+    transition: var(--transicion);
+}
+
+.contacto__campo input:focus,
+.contacto__campo textarea:focus {
+    border-color: var(--color-marca);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.contacto__boton {
+    background: var(--color-marca);
+    color: var(--blanco);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transicion);
+    text-transform: uppercase;
+}
+
+.contacto__boton:hover {
+    background: var(--color-marca-dark);
+}
